@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Internship project 2</string>
+
+
+    <string-array name="age_range">
+
+        <item>0-18</item>
+        <item>18-45</item>
+        <item>45-100</item>
+
+
+
+    </string-array>
+    <string-array name="profession">
+        <item> Data Scientist</item>
+        <item> Big Data Engineer</item>
+        <item>Cloud Architect</item>
+        <item> IT</item>
+        <item> Computer Engineering</item>
+        <item>Software Architect</item>
+        <item> DevOps Engineer</item>
+        <item>Blockchain Engineer</item>
+        <item>IoT Solutions Architect</item>
+        <item>Full-stack Developer</item>
+    </string-array>
+
+
+</resources>
