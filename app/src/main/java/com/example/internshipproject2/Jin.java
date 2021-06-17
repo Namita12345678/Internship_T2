@@ -6,14 +6,14 @@ public class Jin implements Serializable {
     public static final String EXTRA ="com.example.internshipproject2";
 
 
-    String username,password,name,age,profession;
-    String phone_number,gender;
+    String username, name, phone_number, password,age,profession,gender;
+
 
     public Jin(){
     }
 
 
-    public Jin(String username, String password, String address, String state, String phone_number, String gender) {
+    public Jin(String username, String password, String name, String age, String phone_number, String gender, String profession) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -38,9 +38,8 @@ public class Jin implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getName() {
-        return name;
+       return name;
     }
 
     public void setName(String name) {

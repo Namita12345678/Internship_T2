@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText username, password;
 
     Jin j;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         j = new Jin();
         login_button.setOnClickListener(new View.OnClickListener() {
 
+
             @Override
             public void onClick(View view) {
 
@@ -40,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
                     password.setError("Password can't be empty");
                 } else {
 
-                    j.setUsername(username.getText().toString());
-                    j.setPassword(password.getText().toString());
+                    //j.setUsername(username.getText().toString());
+                    //j.setPassword(password.getText().toString());
 
+                    Toast.makeText(MainActivity.this, username.getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, password.getText(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(MainActivity.this, Search_filter.class);
