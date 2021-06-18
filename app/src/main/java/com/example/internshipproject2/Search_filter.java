@@ -62,12 +62,10 @@ public class Search_filter extends AppCompatActivity {
 
 
         textInputLayout_age.setVisibility(View.VISIBLE);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
 
                 if (checkedId == R.id.age_radio_button) {
                     textInputLayout_age.setVisibility(View.VISIBLE);
@@ -133,6 +131,9 @@ public class Search_filter extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 age_range = select_age_range.getText().toString();
 
+                String[] age = age_range.split("-", 2);
+                url = "https://screechy-buzzers.000webhostapp.com/age.php?age1="+age[0]+"&age2="+age[1];
+                Toast.makeText(Search_filter.this, "age1="+age[0]+"&age2="+age[1], Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -150,53 +151,61 @@ public class Search_filter extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 profession = select_profession.getText().toString();
 
-
             }
         });
 
         submit_button.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
-
             public void onClick(View view) {
 
-                if (b_age == true) {
-                    Toast.makeText(Search_filter.this, "Age", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(Search_filter.this, select_age_range.getText(), Toast.LENGTH_SHORT).show();
-                    //String age[] = select_age_range.split("-");
-                    url = "https://screechy-buzzers.000webhostapp.com/age.php?age1=0&age2=45";
-                }
-                else if (b_gender == true) {
+                if (b_age) {
+
+//                    Toast.makeText(Search_filter.this, "Age", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Search_filter.this, select_age_range.getText(), Toast.LENGTH_SHORT).show();
+
+//                    String str = select_age_range.getText().toString();
+//                    String[] age = str.split("-", 2);
+//                    url = "https://screechy-buzzers.000webhostapp.com/age.php?age1="+age[0]+"&age2="+age[1];
+//                    Toast.makeText(Search_filter.this, "age1="+age[0]+"&age2="+age[1], Toast.LENGTH_SHORT).show();
+
+                    //url = "https://screechy-buzzers.000webhostapp.com/age.php?age1=0&age2=18";
+
+                    Log.d("url2",""+url);
+
+                } else if (b_gender) {
                     if (male_radio_button.isChecked()) {
-                        Toast.makeText(getApplicationContext(), "Gender", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Male", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Gender", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Male", Toast.LENGTH_SHORT).show();
                         url = "https://screechy-buzzers.000webhostapp.com/gender.php?gender=Male";
 
                     }
                     if (female_radio_button.isChecked()) {
-                        
-                        Toast.makeText(getApplicationContext(), "Gender", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Female", Toast.LENGTH_SHORT).show();
+
+//                        Toast.makeText(getApplicationContext(), "Gender", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Female", Toast.LENGTH_SHORT).show();
                         url = "https://screechy-buzzers.000webhostapp.com/gender.php?gender=Female";
+
+
                     }
+                } else if (b_profession) {
+//                    Toast.makeText(Search_filter.this, "Profession", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Search_filter.this, select_profession.getText().toString(), Toast.LENGTH_SHORT).show();
+                    url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession=" + select_profession.getText();
+
+
                 }
-                    else if(b_profession ==true)
 
-                            {
-                                Toast.makeText(Search_filter.this, "Profession", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(Search_filter.this, select_profession.getText().toString(), Toast.LENGTH_SHORT).show();
-                                url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession="+select_profession.getText();
-                            }
+                Intent intent = new Intent(Search_filter.this, Final.class);
+                intent.putExtra("URL", url);
+                startActivity(intent);
 
-                    Intent intent = new Intent(Search_filter.this, Final.class);
-                     intent.putExtra("URL",url);
-                      startActivity(intent);
-                            }
+            }
 
         });
 
     }
+
 }
 
 

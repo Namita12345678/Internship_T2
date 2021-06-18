@@ -1,8 +1,11 @@
 package com.example.internshipproject2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
@@ -30,39 +33,37 @@ public class Final extends AppCompatActivity {
     CustomAdapter adapter;
     String result;
     String url;
-    ArrayList list = new ArrayList();
-    final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    ProgressDialog dialog;
+    TextView no_items_in_list;
 
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
 
-
         list_view = findViewById(R.id.list_view);
-        //adapter = new CustomAdapter();
+        no_items_in_list = findViewById(R.id.no_items_in_list);
 
         userModel = new ArrayList<>();
         Intent i = getIntent();
         url = i.getStringExtra("URL");
         Log.d("url", "URL: " + url);
-        //retrieve();
 
-         userModel.add(new UserModel("Namita Shah","18","F", "namitashah42@gmail.com",  "6352007588", "IT"));
-        userModel.add(new UserModel("Nandini Shah","18","F", "nandinishah88@gmail.com","8780237219","IT"));
-
-        list_view.setAdapter(adapter);
+        retrieve();
 
     }
 
     void retrieve() {
 
+        dialog = new ProgressDialog(Final.this);
+        dialog.setMessage("Fetching data from Server.");
+        dialog.show();
 
-        executorService.execute(new Runnable() {  //data retrieve
+        executorService.execute(new Runnable() {
             @Override
             public void run() {
-
                 try {
                     Json o = new Json();
                     result = o.insert(url);
@@ -78,57 +79,52 @@ public class Final extends AppCompatActivity {
                         UserModel p = new UserModel();
 
                         p.setName(jsonObj.getString("name"));
-                       // p.setAge(jsonObj.getString("age"));
-                        //p.setGender(jsonObj.getString("gender"));
-                        //p.setProfession(jsonObj.getString("profession"));
-                        //p.setPhoneNumber(jsonObj.getString("phone_number"));
-                        //p.setEmail(jsonObj.getString("email"));
-                        list.add(p);
+                        p.setAge(jsonObj.getString("age"));
+                        p.setGender(jsonObj.getString("gender"));
+                        p.setEmail(jsonObj.getString("email"));
+                        p.setProfession(jsonObj.getString("profession"));
+                        p.setPhoneNumber(jsonObj.getString("phone_number"));
+                        userModel.add(p);
 
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if(userModel.size() == 0){
+                            no_items_in_list.setVisibility(View.VISIBLE);
+                        }else{
+                            no_items_in_list.setVisibility(View.GONE);
+                            adapter = new CustomAdapter();
+                            list_view.setAdapter(adapter);
+                        }
+
+                        dialog.dismiss();
+
+                    }
+                });
+
             }
+
         });
 
-        runOnUiThread(new Runnable() {  //set
-                @Override
-                public void run() {
-                     Log.d("100",list.size()+"");
-
-
-                    adapter = new CustomAdapter(Final.this,list);
-                    list_view.setAdapter(adapter);
-
-                }
-            });
-
-        }
-    
-
-
-
+    }
 
     class CustomAdapter extends BaseAdapter {
-        private Context context; //context
-        private ArrayList list;
-         public CustomAdapter(Context context,ArrayList list)
-         {
-             this.context=context;
-             this.list=list;
-             Log.d("PC",list.size()+"") ;
-         }
+
 
         @Override
         public int getCount() {
-            return list.size();
+            return userModel.size();
         }
 
         @Override
         public Object getItem(int abc) {
-            return list.get(abc);
+            return 0;
         }
 
         @Override
@@ -148,8 +144,8 @@ public class Final extends AppCompatActivity {
             TextView phone_no_tv = convertView.findViewById(R.id.phone_no_tv);
             TextView profession_tv = convertView.findViewById(R.id.profession_tv);
 
-            UserModel p = (UserModel)list.get(position);
-             Log.d("151",p.getEmail()) ;
+            UserModel p = (UserModel)userModel.get(position);
+
             name_tv.setText(p.getName());
             age_tv.setText(p.getAge());
             gender_tv.setText(p.getGender());
@@ -158,7 +154,6 @@ public class Final extends AppCompatActivity {
             profession_tv.setText(p.getProfession());
 
             return convertView;
-
 
         }
     }

@@ -60,4 +60,6 @@ public class UserModel {
     public void setProfession(String profession) {
         Profession = profession;
     }
+
+
 }
