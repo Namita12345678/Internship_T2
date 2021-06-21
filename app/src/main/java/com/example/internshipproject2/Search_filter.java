@@ -194,6 +194,7 @@ public class Search_filter extends AppCompatActivity {
                     url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession=" + select_profession.getText();
 
 
+
                 }
 
                 Intent intent = new Intent(Search_filter.this, Final.class);
