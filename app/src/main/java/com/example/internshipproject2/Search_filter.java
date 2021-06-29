@@ -191,7 +191,8 @@ public class Search_filter extends AppCompatActivity {
                 } else if (b_profession) {
 //                    Toast.makeText(Search_filter.this, "Profession", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(Search_filter.this, select_profession.getText().toString(), Toast.LENGTH_SHORT).show();
-                    url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession=" + select_profession.getText();
+                    String Profession=select_profession.getText().toString();
+                    url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession="+Profession + "";
 
 
 

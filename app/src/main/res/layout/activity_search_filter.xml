@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/floral_background"
+    android:background="@drawable/liliy"
     android:orientation="vertical"
     tools:context=".Search_filter">
 
@@ -14,38 +13,35 @@
         android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="180dp"
         android:text="Search"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:checkedButton="@+id/age_radio_button"
-        app:layout_constraintBottom_toBottomOf="@+id/search"
-        app:layout_constraintStart_toEndOf="@+id/search"
-        app:layout_constraintTop_toTopOf="@+id/search">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/search"
+        app:layout_constraintStart_toStartOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/search">
+
 
         <RadioButton
             android:id="@+id/age_radio_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:buttonTint="@color/black"
             android:layout_marginLeft="10dp"
+            android:buttonTint="@color/black"
             android:fontFamily="@font/product_sans_regular"
             android:text="Age"
             android:textSize="15dp" />
-
-
-
 
         <RadioButton
             android:id="@+id/gender_radio_button"
@@ -59,7 +55,7 @@
 
         <RadioButton
             android:id="@+id/prof_radio_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:buttonTint="@color/black"
@@ -69,7 +65,6 @@
 
     </RadioGroup>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_age"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -77,7 +72,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="20dp"
-        android:background="@color/AntiqueWhite"
         android:hint="Age"
         android:orientation="horizontal"
         android:textSize="18dp"
@@ -85,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:startIconDrawable="@drawable/ic_baseline_age_people_24">
 
         <AutoCompleteTextView
@@ -101,26 +95,26 @@
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/product_sans_regular"
+        android:gravity="center"
         android:text="Gender: "
         android:textColor="@color/black"
         android:textSize="20dp"
         android:visibility="gone"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
         android:id="@+id/radioGroup_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:layout_marginLeft="20dp"
         android:checkedButton="@+id/male_radio_button"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/gender"
         app:layout_constraintStart_toEndOf="@+id/gender"
         app:layout_constraintTop_toTopOf="@+id/gender">
@@ -131,9 +125,9 @@
             android:layout_height="match_parent"
             android:buttonTint="@color/black"
             android:fontFamily="@font/product_sans_regular"
-            android:visibility="gone"
             android:text="Male"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:visibility="gone" />
 
         <RadioButton
             android:id="@+id/female_radio_button"
@@ -141,10 +135,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:buttonTint="@color/black"
-            android:visibility="gone"
             android:fontFamily="@font/product_sans_regular"
             android:text="Female"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:visibility="gone" />
     </RadioGroup>
 
 
@@ -154,7 +148,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="15dp"
-        android:background="@color/AntiqueWhite"
         android:layout_marginTop="20dp"
         android:hint="Profession"
         android:orientation="horizontal"
@@ -163,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:startIconDrawable="@drawable/ic_baseline_profession_24">
 
         <AutoCompleteTextView
@@ -181,9 +174,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="52dp"
-        android:background="@color/Turquoise"
+        android:layout_marginBottom="192dp"
+        android:background="@drawable/login_btn_shape"
         android:text="Submit"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

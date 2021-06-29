@@ -43,6 +43,7 @@ public class Final extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
 
+
         list_view = findViewById(R.id.list_view);
         no_items_in_list = findViewById(R.id.no_items_in_list);
 
@@ -50,6 +51,7 @@ public class Final extends AppCompatActivity {
         Intent i = getIntent();
         url = i.getStringExtra("URL");
         Log.d("url", "URL: " + url);
+        //retrieve();
 
         retrieve();
 
@@ -64,6 +66,7 @@ public class Final extends AppCompatActivity {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
+
                 try {
                     Json o = new Json();
                     result = o.insert(url);
@@ -154,6 +157,7 @@ public class Final extends AppCompatActivity {
             profession_tv.setText(p.getProfession());
 
             return convertView;
+
 
         }
     }
