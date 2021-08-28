@@ -12,13 +12,13 @@
 
     </string-array>
     <string-array name="profession">
-        <item> Data Scientist</item>
-        <item> Big Data Engineer</item>
+        <item>Data Scientist</item>
+        <item>Big Data Engineer</item>
         <item>Cloud Architect</item>
-        <item> IT</item>
-        <item> Computer Engineering</item>
+        <item>IT</item>
+        <item>Computer Engineering</item>
         <item>Software Architect</item>
-        <item> DevOps Engineer</item>
+        <item>DevOps Engineer</item>
         <item>Blockchain Engineer</item>
         <item>IoT Solutions Architect</item>
         <item>Full-stack Developer</item>

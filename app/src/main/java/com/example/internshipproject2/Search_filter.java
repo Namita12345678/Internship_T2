@@ -133,7 +133,7 @@ public class Search_filter extends AppCompatActivity {
 
                 String[] age = age_range.split("-", 2);
                 url = "https://screechy-buzzers.000webhostapp.com/age.php?age1="+age[0]+"&age2="+age[1];
-                Toast.makeText(Search_filter.this, "age1="+age[0]+"&age2="+age[1], Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Search_filter.this, "age1="+age[0]+"&age2="+age[1], Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -192,7 +192,7 @@ public class Search_filter extends AppCompatActivity {
 //                    Toast.makeText(Search_filter.this, "Profession", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(Search_filter.this, select_profession.getText().toString(), Toast.LENGTH_SHORT).show();
                     String Profession=select_profession.getText().toString();
-                    url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession="+Profession + "";
+                    url = "https://screechy-buzzers.000webhostapp.com/profession.php?profession="+Profession;
 
 
 
